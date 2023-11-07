@@ -6,31 +6,31 @@ body {
     height: 100vh;
     margin: 0;
     background-color: #f9f9f9;
-   }
-   
-   #calcForm {
+}
+
+#calcForm {
     display: flex;
     flex-direction: column;
     align-items: center;
-   }
+}
 
-   .description{
+.description {
     justify-content: center;
     font-size: 18px;
     padding: 10px;
     text-align: center;
     max-width: 850px;
-   }
+}
 
-   .container {
+.container {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-bottom: 10px;
     max-width: 850px;
-   }
+}
 
-   input {
+input {
     flex: 1;
     margin: 0 5px;
     border: 1px solid #ccc;
@@ -39,20 +39,22 @@ body {
     transition: border-color 0.3s ease;
     font-size: 18px;
     padding: 10px;
-   }
+}
 
-   input:hover {
+input:hover {
     border-color: #999;
-   }
-   
-   input:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-   }
+}
 
-   select {
+input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
+}
+
+select {
     font-size: 18px;
     padding: 10px;
-   }
+}
 
-   
+#output {
+    -moz-appearance: textfield;
+}
