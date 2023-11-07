@@ -16,13 +16,11 @@
     const outputSelect = document.getElementById('outputSelect').value;
 
     const time = (Number(document.getElementById('inputHH').value) * 3600) + (Number(document.getElementById('inputMM').value) * 60) + Number(document.getElementById('inputSS').value);
-    console.log('time ', time);
 
     try {
       switch (inputSizeSelect) {
         case "GB":
           var out = ((inputSize / time)* 1024 * 1024 * 8).toFixed();
-          console.log('out ', out);
           switch (outputSelect) {
             case "KB":
               document.getElementById('output').value = out;
@@ -34,7 +32,6 @@
               document.getElementById('output').value = (out / 1000 / 1000).toFixed(3);
               break;
           }
-          document.getElementById('output').value = (inputSize * 1000 * 1000 * 8) / (time);
           break;
         case "MB":
           var out = ((inputSize/ time)* 1024 * 8).toFixed();
