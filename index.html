@@ -93,7 +93,7 @@
         </select>
       </div>
       <div class="container">
-        <input type="number" id="inputHH" placeholder="HH"
+        <input type="number" id="inputHH" placeholder="HH" min="0"
           onkeypress="return event.charCode >= 48 && event.charCode <= 57" oninput="calculate()">
         <input type="number" id="inputMM" placeholder="MM"
           onkeypress="return event.charCode >= 48 && event.charCode <= 57 && this.value.length < 2" max="59" min="0"
