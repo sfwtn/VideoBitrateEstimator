@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icon.png">
+  <title>Video Bitrate Estimator</title>
+</head>
+
+<script>
+  function calculate() {
+    const inputSize = document.getElementById('inputSize').value;
+    const inputSizeSelect = document.getElementById('inputSizeSelect').value;
+    const outputSelect = document.getElementById('outputSelect').value;
+
+    const time = (Number(document.getElementById('inputHH').value) * 3600) + (Number(document.getElementById('inputMM').value) * 60) + Number(document.getElementById('inputSS').value);
+    console.log('time ', time);
+
+    try {
+      switch (inputSizeSelect) {
+        case "GB":
+          var out = ((inputSize / time)* 1024 * 1024 * 8).toFixed();
+          console.log('out ', out);
+          switch (outputSelect) {
+            case "KB":
+              document.getElementById('output').value = out;
+              break;
+            case "MB":
+              document.getElementById('output').value = (out / 1000).toFixed(2);
+              break;
+            case "GB":
+              document.getElementById('output').value = (out / 1000 / 1000).toFixed(3);
+              break;
+          }
+          document.getElementById('output').value = (inputSize * 1000 * 1000 * 8) / (time);
+          break;
+        case "MB":
+          var out = ((inputSize/ time)* 1024 * 8).toFixed();
+          switch (outputSelect) {
+            case "KB":
+              document.getElementById('output').value = out;
+              break;
+            case "MB":
+              document.getElementById('output').value = (out / 1000).toFixed(2);
+              break;
+            case "GB":
+              document.getElementById('output').value = (out / 1000 / 1000).toFixed(3);
+              break;
+          }
+          break;
+        case "KB":
+          var out = ((inputSize/ time)*8).toFixed();
+          switch (outputSelect) {
+            case "KB":
+              document.getElementById('output').value = out;
+              break;
+            case "MB":
+              document.getElementById('output').value = (out / 1000).toFixed(2);
+              break;
+            case "GB":
+              document.getElementById('output').value = (out / 1000 / 1000).toFixed(3);
+              break;
+          }
+          break;
+      }
+    } catch (error) {
+      console.error(`An error occurred: ${error.message}`);
+    }
+  }
+</script>
+
+<body>
+  <header></header>
+  <main>
+    <form id="calcForm">
+      <div class="container">
+        <input type="number" id="inputSize" onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+          placeholder="Target video file size" oninput="calculate()">
+        <select id="inputSizeSelect" onchange="calculate()">
+          <option value="GB">GB</option>
+          <option value="MB">MB</option>
+          <option value="KB">KB</option>
+        </select>
+      </div>
+      <div class="container">
+        <input type="number" id="inputHH" placeholder="HH"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57" oninput="calculate()">
+        <input type="number" id="inputMM" placeholder="MM"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57 && this.value.length < 2" max="59" min="0"
+          oninput="calculate()">
+        <input type="number" id="inputSS" placeholder="SS"
+          onkeypress="return event.charCode >= 48 && event.charCode <= 57 && this.value.length < 2" max="59" min="0"
+          oninput="calculate()">
+        <!--I tried to protect these fields from stupid inputs, but you can still paste whatever you want in there no problem-->
+        <!--I could write a script to check for it but honestly I just don't care enough-->
+      </div>
+      <div class="container">
+        <input type="number" id="output" readonly placeholder="Calculated bitrate"></input>
+        <select id="outputSelect" onchange="calculate()">
+          <option value="KB">KB/s</option>
+          <option value="MB">MB/s</option>
+          <option value="GB">GB/s</option>
+        </select>
+      </div>
+    </form>
+  </main>
+</body>
+</html>
