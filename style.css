@@ -1,11 +1,28 @@
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: flex;
+    margin-top: 15vh;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
     background-color: #f9f9f9;
+}
+
+main{
+    max-width: 950px;
+}
+
+.description {
+    justify-content: center;
+    font-size: 18px;
+    padding-bottom: 10px;
+    text-align: center;
+    max-width: 100%;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    max-width: 100%;
 }
 
 #calcForm {
@@ -14,20 +31,14 @@ body {
     align-items: center;
 }
 
-.description {
-    justify-content: center;
-    font-size: 18px;
-    padding: 10px;
-    text-align: center;
-    max-width: 850px;
+#inputHH{
+    min-width: 5%;
 }
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
-    max-width: 850px;
+#inputMM{
+    min-width: 5%;
+}
+#inputSS{
+    min-width: 5%;
 }
 
 input {
@@ -57,4 +68,10 @@ select {
 
 #output {
     -moz-appearance: textfield;
+}
+
+@media (max-width: 1064px){
+    main{
+        max-width: 90vw;
+    }
 }
